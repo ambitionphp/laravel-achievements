@@ -6,10 +6,12 @@ namespace Assada\Achievements\Model;
 use Carbon\Carbon;
 use Exception;
 use Assada\Achievements\Achievement;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Facades\Config;
+
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -23,12 +25,7 @@ use Ramsey\Uuid\Uuid;
  */
 class AchievementProgress extends Model
 {
-    /**
-     * Indicates if the IDs are auto-incrementing.
-     *
-     * @var bool
-     */
-    public $incrementing = false;
+    use HasUuids;
 
     /**
      * The table associated with the model.
