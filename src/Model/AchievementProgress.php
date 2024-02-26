@@ -12,8 +12,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Facades\Config;
 
-use Ramsey\Uuid\Uuid;
-
 /**
  * Model for the table that will store the data regarding achievement progress and unlocks.
  *
@@ -117,9 +115,6 @@ class AchievementProgress extends Model
      */
     public function save(array $options = []): bool
     {
-        if (is_null($this->id)) {
-            $this->id = Uuid::uuid4()->toString();
-        }
         $recentlyUnlocked = false;
         if (is_null($this->unlocked_at) && $this->isUnlocked()) {
             $recentlyUnlocked = true;
